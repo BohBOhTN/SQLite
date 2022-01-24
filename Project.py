@@ -1,10 +1,12 @@
 import sqlite3
+import os
 print('========================')
 print('Bonjour ')
 print('========================')
 Nom_DB = str(input('Donner Une Nom Pour La Base De Donner  '))
 connection = sqlite3.connect(f"{Nom_DB}.db")
 cursor = connection.cursor()
+directory = os.getcwd()
 Nb_Table = int(input(f"Combien De Tables Voulez Vouz Ajouter a La Base De Donnée {Nom_DB} ?  "))
 i = 1
 while (i <= Nb_Table):
@@ -49,6 +51,12 @@ while (i <= Nb_Table):
             cursor.execute(f"ALTER TABLE {Nom_Table} ADD {Nom_Col} TEXT")
             connection.commit()
     i += 1
+print('=========================================================')
+print("Votre Base De Donnée A été Créé Avec Succès ")
+print(f"Vous Pouvez Trouver Le Ficher {Nom_DB}.db Dans Cette Repertoire ")
+print(f"{directory}\{Nom_DB}.db")
+print('=========================================================')
+
 
 
 
